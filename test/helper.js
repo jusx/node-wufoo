@@ -1,5 +1,5 @@
 var should = require("should");
-var Wufoo = require("../lib");
+var Wufoo = require("../");
 module.exports = new helper(); 
 
 // helpers.
@@ -16,7 +16,7 @@ helper.prototype.isWidget = function(widget) {
 }
 
 function isEntry(entry) {
-   // TODO refactor to test for all attributes. 
+   // TODO refactor to test for all attributes.
    should.exist(entry.entryId);
    should.exist(entry.createdBy);
 }

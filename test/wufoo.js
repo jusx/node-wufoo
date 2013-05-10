@@ -1,6 +1,5 @@
 var should = require("should");
 var util = require("util");
-var Wufoo = require("../lib");
 var helper = require("./helper.js");
 
 describe("Wufoo", function() {
