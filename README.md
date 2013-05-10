@@ -4,10 +4,10 @@ Wufoo-node is a [Wufoo API] (http://www.wufoo.com/docs/api/v3/) wrapper for [nod
 
 ## Installation
 
-   $ npm install wufoo
+    $ npm install wufoo
    
 ## Usage
-
+```javascript
    var Wufoo = require("wufoo");
    var wufoo = new Wufoo("fishbowl", "AOI6-LFKL-VM1Q-IEX9");
    
@@ -23,15 +23,15 @@ Wufoo-node is a [Wufoo API] (http://www.wufoo.com/docs/api/v3/) wrapper for [nod
    wufoo.getFormEntries("idofForm", function(err, entries) {
       // do something with your entries here.
    });
-   
+```   
 ## Contributions
 
-Please fork it. Add new features or fix bugs and do a pull request. Please include tests.
+Please fork it. Add new features or fix bugs and do a pull request. Tests should be included.
 
 ### Testing
 Be sure to have mocha installed. Run the entire test suite from the root directory of the project:
-
-   $ mocha
+        
+    $ mocha
 
 ## TODO
 
