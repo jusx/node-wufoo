@@ -32,7 +32,7 @@ Each API returns it's own set of objects which is all documented on [Wufoo.com] 
 
 ### Forms
 
-Get all the forms for an account. <code>getForms</code> returns an array of <code>Form</code> objects.
+Get all the forms for an account. <code>getForms</code> returns an array of <code>Form</code> objects. You can also call <code>getForm</code> to get a specific <code>Form</code>.
 
 ```javascript
 
@@ -50,7 +50,7 @@ Get all the forms for an account. <code>getForms</code> returns an array of <cod
    
 ```   
 
-Convenience methods are provided to get entries, fields and entry count for a Form:
+Convenience methods are provided to get entries, fields and entry count for a <code>Form</code>:
 
 ```javascript
 
@@ -65,13 +65,13 @@ Convenience methods are provided to get entries, fields and entry count for a Fo
    
     form.getFields(function(err, fields) {
         // do something here.
-      });
+    });
 ```   
 
 
 ### Entries
 
-Get all the entries for a form. <code>getFormEntries</code> and <code>getReportEntries</code> returns an array of <code>Entry</code> objects.
+Get all the entries for a form or report. <code>getFormEntries</code> and <code>getReportEntries</code> returns an array of <code>Entry</code> objects.
 
 ```javascript
 
@@ -115,8 +115,8 @@ Convenience methods are provided to get entries, fields and entry count for a Re
     });
    
     report.getFields(function(err, fields) {
-        // do something here.
-      });
+      // do something here.
+    });
 ```   
 
 
@@ -177,6 +177,5 @@ Be sure to have mocha installed. Run the entire test suite from the root directo
 ## TODO
 
 - Support updating Entries ([POST API] (http://www.wufoo.com/docs/api/v3/entries/post/)).
-- Implement Comments
 - Implement [Web Hooks] (http://www.wufoo.com/docs/api/v3/webhooks/).
 - Implement [Login] (http://www.wufoo.com/docs/api/v3/login/).
