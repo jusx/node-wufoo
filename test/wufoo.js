@@ -157,5 +157,29 @@ describe("Wufoo", function() {
          });
       })
    });
+   
+   describe("#getWidgets", function(){
+      var reportId;
+      before(function(done){
+         $wufoo.getReports(function(err, reports){
+            reportId = reports[0].hash;
+            done(err)
+         })
+         
+      })
+      
+      it("Should return an Array of Widgets given the hash", function(done) {
+         $wufoo.getWidgets(reportId, function(err, widgets){
+            (widgets instanceof Array).should.be.true;
+            if (widgets.length>0) {
+               // TODO -- the fishbowl account we are using for testing do not have any widgets.
+               // Must find a way for better test coverage.
+               util.debug("Testing Widget Entity");
+               helper.isWidget(widgets[0]);
+            }
+            done(err);
+         });
+      })
+   });
 });
 
