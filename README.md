@@ -167,7 +167,13 @@ Alternatively if all you need is the amount of comments for a form you can call 
 
 ## Contributions
 
-Please fork it. Add new features or fix bugs and do a pull request. Tests should be included.
+Please fork it. Add new features or fix bugs and do a pull request. Tests should be included:
+
+- Fork it
+- Create your feature branch (<code>git checkout -b feature-new-stuff</code>).
+- Commit your changes (<code>git commit -am 'Added some feature'</code>).
+- Push to the branch (<code>git push origin feature-new-stuff</code>).
+- Create new Pull Request.
 
 ### Testing
 Be sure to have mocha installed. Run the entire test suite from the root directory of the project:
