@@ -3,6 +3,7 @@ var util = require("util");
 var helper = require("./helper.js");
 
 describe("Wufoo", function() {
+   
    var $wufoo= helper.wufoo;
    describe("#getForms", function() {
       it("Should return forms without error", function(done) {
@@ -176,6 +177,39 @@ describe("Wufoo", function() {
                // Must find a way for better test coverage.
                util.debug("Testing Widget Entity");
                helper.isWidget(widgets[0]);
+            }
+            done(err);
+         });
+      })
+   });
+   
+   describe("#getFormComments", function(){
+      // TODO find a way to mock up wufoo responses so that we have the dataset we need for testing!
+      var id;
+      before(function(done){
+         $wufoo.getForms(function(err, forms){
+            for (var i=0;i<forms.length;i++) {
+               form = forms[i];
+               $wufoo.getCommentCount(forms[i].hash, function(err, count) {
+                  if (count >0) {
+                     id = form.hash;
+                  }
+               });
+             }
+            id = (id==undefined)? forms[0].hash : id;
+            done(err)
+         })
+         
+      })
+      
+      it("Should return an Array of Comments given the hash", function(done) {
+         $wufoo.getComments(id, function(err, comments){
+            (comments instanceof Array).should.be.true;
+            if (comments.length>0) {
+               // TODO -- the fishbowl account we are using for testing do not have any widgets.
+               // Must find a way for better test coverage.
+               util.debug("Testing Comment Entity");
+               helper.isComment(comment[0]);
             }
             done(err);
          });

@@ -15,6 +15,12 @@ helper.prototype.isWidget = function(widget) {
    }
 }
 
+helper.prototype.isComment = function(comment ) {
+   for (prop in ["commentId", "entryId", "text", "commentedBy", "dateCreated"]) {
+      should.exist(comment[prop]);
+   }
+}
+
 function isEntry(entry) {
    // TODO refactor to test for all attributes.
    should.exist(entry.entryId);
@@ -28,6 +34,8 @@ function isField(field) {
    should.not.exist(field.startDate);
    should.not.exist(field.endDate);
 }
+
+
 
 
 
