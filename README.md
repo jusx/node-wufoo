@@ -1,6 +1,6 @@
-# Wufoo-Node 
+# Node-Wufoo 
 
-Wufoo-node is a [Wufoo API] (http://www.wufoo.com/docs/api/v3/) wrapper for [node.js] (http://nodejs.org/). It simplifies working with the Wufoo API and provides an abstraction layer.
+Node-Wufoo is a [Wufoo API] (http://www.wufoo.com/docs/api/v3/) wrapper for [node.js] (http://nodejs.org/). It simplifies working with the Wufoo API and provides an abstraction layer.
 
 ## Installation
 
