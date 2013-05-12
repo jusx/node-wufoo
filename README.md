@@ -226,8 +226,10 @@ Be sure to have [mocha](http://visionmedia.github.io/mocha/) installed. Run the 
         
     $ mocha
 
-## TODO
+## Future Versions
+Node-Wufoo implements almost all of the Wufoo RESTful API except the following: 
 
-- Support updating Entries ([POST API] (http://www.wufoo.com/docs/api/v3/entries/post/)).
-- Implement [Web Hooks] (http://www.wufoo.com/docs/api/v3/webhooks/).
-- Implement [Login] (http://www.wufoo.com/docs/api/v3/login/).
+- Updating Entries ([POST API] (http://www.wufoo.com/docs/api/v3/entries/post/)).
+- [Login] (http://www.wufoo.com/docs/api/v3/login/).
+
+Implementation and support of the above will be included in future versions. 

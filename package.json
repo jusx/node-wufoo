@@ -1,7 +1,7 @@
 {
   "name": "wufoo",
   "description": "Wrapper for the Wufoo API (http://www.wufoo.com/docs/api/v3/)",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "author": {"name": "Justin Law", "email": "<hello@justinlaw.org>"},
   "dependencies": {
     "request": "~2.0.0"
