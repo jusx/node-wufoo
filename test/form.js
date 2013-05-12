@@ -1,6 +1,6 @@
 var should = require("should");
 var helper = require("./helper.js");
-
+var util = require("util");
 
 describe("Form", function() {
    var $form;
@@ -43,6 +43,22 @@ describe("Form", function() {
          });
       });
    });
+   
+   describe("#addWebhook and #deleteWebhook", function() {
+      it("Should add a webhoook successfully", function(done) {
+         $form.addWebhook("http://localhost:3000/bin", function(err, hashid) {
+            should.exist(hashid);
+            (typeof(hashid)).should.equal("string");
+            util.debug("Added Webhook: " + hashid);
+            $form.deleteWebhook(hashid, function(err, success) {
+               success.should.be.true;
+               util.debug("Removed Webhook: " + hashid);
+               done(err);
+            });
+         });
+         
+      });
+   })
    
    
 })

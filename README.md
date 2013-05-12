@@ -168,13 +168,13 @@ Add a [WebHook] (http://www.wufoo.com/docs/api/v3/webhooks/put/) for a form:
 
 ```javascript
   
-   wufoo.webhook().add("hashid", "http://localhost:3000", function(err, hashid) {
+   wufoo.webhook().add("formid", "http://localhost:3000", function(err, hashid) {
      // store the webhook hashid somewhere in case we want to delete them later.
    })
    
    // pass in optional options
    var options = {url: "http://abc.com/webhook", handshakeKey: "hand-shaking", metadata: true}
-   wufoo.webhook().add("hashid", options, function(err, hashid) {
+   wufoo.webhook().add("formid", options, function(err, hashid) {
      // store the webhook hashid somewhere in case we want to delete them later.
      db.put("WebHooks", {formid:form.hash, key:hashid});
    })
@@ -192,12 +192,31 @@ Delete the WebHook. [More info] (http://www.wufoo.com/docs/api/v3/webhooks/delet
    
 ```
 
+Helper methods are also provided on the <code>Form</code> object:
+
+
+   ```javascript   
+      form.addWebhook("http://localhost:3000", function(err, hashid) {
+         // store the webhook hashid somewhere in case we want to delete them later.
+       })
+      
+   
+      form.deleteWebhook("webhookHashId", function(err, success) {
+        if (!success) {
+          // do something.
+        }
+
+      })
+
+   ```
+
+
 ## Contributions
 
 Please fork it. Add new features or fix bugs and do a pull request. Tests should be included.
 
 ### Testing
-Be sure to have mocha installed. Run the entire test suite from the root directory of the project:
+Be sure to have [mocha](http://visionmedia.github.io/mocha/) installed. Run the entire test suite from the root directory of the project:
         
     $ mocha
 
