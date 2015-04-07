@@ -95,7 +95,38 @@ describe("Wufoo", function() {
          });
       });
    });
-   
+
+   describe("#getFormEntriesById", function() {
+      var formId;
+      var entryId;
+      before(function(done){
+         $wufoo.getForms(function(err, forms){
+            formId = forms[0].hash;
+            $wufoo.getFormEntries(formId, function(err, entries){
+               entryId = entries[0].entryId;
+               done(err);
+            });
+         })
+      })
+
+      it("Should return entries without error", function(done) {
+         $wufoo.getFormEntriesById(formId, entryId, function(err, entries){
+            should.not.exist(err);
+            should.exist(entries);
+            (entries.length > 0).should.be.true;
+            entries[0].entryId.should.equal(entryId.toString());
+            done(err);
+         });
+      });
+
+      it("Should return array of objects containing typical wufoo entry attributes", function(done) {
+         $wufoo.getFormEntriesById(formId, entryId, function(err, entries){
+            helper.isEntry(entries[0]);
+            done(err);
+         });
+      });
+   });
+
    describe("#getReportEntries", function() {
       var reportId;
       before(function(done){
