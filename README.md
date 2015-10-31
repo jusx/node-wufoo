@@ -1,3 +1,5 @@
+![Build](https://circleci.com/gh/jusx/node-wufoo.svg?style=shield&circle-token=3c6bf745453828aa4cc23daf7befe363287e0b97)
+
 # Node-Wufoo 
 
 Node-Wufoo is a [Wufoo API] (http://www.wufoo.com/docs/api/v3/) wrapper for [node.js] (http://nodejs.org/). It simplifies working with the Wufoo API and provides an abstraction layer.
