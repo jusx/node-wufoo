@@ -224,7 +224,7 @@ Please fork it. Add new features or fix bugs and do a pull request. Tests should
 - Create new Pull Request.
 
 ### Testing
-Be sure to have [mocha](http://visionmedia.github.io/mocha/) installed. Run the entire test suite from the root directory of the project:
+Be sure to have [mocha](http://mochajs.org/) installed. Run the entire test suite from the root directory of the project:
         
     $ mocha
 
