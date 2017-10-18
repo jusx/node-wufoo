@@ -1,3 +1,5 @@
+![Build](https://circleci.com/gh/jusx/node-wufoo.svg?style=shield&circle-token=3c6bf745453828aa4cc23daf7befe363287e0b97)
+
 # Node-Wufoo 
 
 Node-Wufoo is a [Wufoo API] (http://www.wufoo.com/docs/api/v3/) wrapper for [node.js] (http://nodejs.org/). It simplifies working with the Wufoo API and provides an abstraction layer.
@@ -336,7 +338,7 @@ Please fork it. Add new features or fix bugs and do a pull request. Tests should
 - Create new Pull Request.
 
 ### Testing
-Be sure to have [mocha](http://visionmedia.github.io/mocha/) installed. Run the entire test suite from the root directory of the project:
+Be sure to have [mocha](http://mochajs.org/) installed. Run the entire test suite from the root directory of the project:
         
     $ mocha
 
