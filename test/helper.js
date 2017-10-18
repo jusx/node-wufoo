@@ -9,6 +9,7 @@ function helper() {
 }
 helper.prototype.isEntry = isEntry;
 helper.prototype.isField = isField;
+helper.prototype.isSystemFields = isSystemFields;
 helper.prototype.isWidget = function(widget) {
    for (prop in ["names", "size", "hash", "type", "typeDesc"]) {
       should.exist(widget[prop]);
@@ -35,6 +36,13 @@ function isField(field) {
    should.not.exist(field.endDate);
 }
 
+function isSystemFields(fields) {
+   fields.should.containDeep([{isSystem: true}]);
+   var found = fields.filter(function(field) {
+    return (field.isSystem)
+   });
+   (found.length > 0).should.be.true;
+}
 
 
 

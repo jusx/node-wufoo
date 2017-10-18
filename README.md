@@ -28,6 +28,22 @@ Each API returns it's own set of objects which is all documented on [Wufoo.com] 
    wufoo.getFormEntries("idofForm", function(err, entries) {
       // do something with your entries here.
    });
+   
+   // pass in optional query parameters 
+   var optionalQuery = {pretty: true}
+   
+   wufoo.getForms(optionalQuery, function(err, forms) {
+      // do something with your forms here.
+   });
+   
+   // get a specific form given the id and pass in optional query parameters 
+   wufoo.getForm("idofForm", optionalQuery, function(err, forms) {
+      // do something with your forms here.
+   });
+   
+   wufoo.getFormEntries("idofForm", optionalQuery, function(err, entries) {
+      // do something with your entries here.
+   });
 ```   
 
 ### Forms
@@ -37,14 +53,29 @@ Get all the forms for an account. <code>getForms</code> returns an array of <cod
 ```javascript
 
    wufoo.getForms(function(err, forms) {
-      console.log(form.hash);
-      console.log(form.name);
-      console.log(form.description);
+      console.log(forms[0].hash);
+      console.log(forms[0].name);
+      console.log(forms[0].description);
       // do something here.
    });
    
    // get a specific form given the id.
    wufoo.getForm("idofForm", function(err, form){
+      // do something here.
+   });
+   
+   // pass in optional query parameters 
+   var optionalQuery = {pretty: true}
+   
+   wufoo.getForms(optionalQuery, function(err, forms) {
+      console.log(forms[0].hash);
+      console.log(forms[0].name);
+      console.log(forms[0].description);
+      // do something here.
+   });
+   
+   // get a specific form given the id and pass in optional query parameters 
+   wufoo.getForm("idofForm", optionalQuery, function(err, forms) {
       // do something here.
    });
    
@@ -66,6 +97,22 @@ Convenience methods are provided to get entries, fields and entry count for a <c
     form.getFields(function(err, fields) {
         // do something here.
     });
+    
+    // pass in optional query parameters 
+    var optionalQuery = {pretty: true}
+    
+    form.getEntries(optionalQuery, function(err, entries) {
+      // do something here.
+    });
+    
+    form.getEntriesCount(optionalQuery, function(err, count) {
+       // do something here.
+       console.log("There are " + count + " number of entries");
+     });
+    
+     form.getFields(optionalQuery, function(err, fields) {
+         // do something here.
+     });
 ```   
 
 
@@ -75,11 +122,22 @@ Get all the entries for a form or report. <code>getFormEntries</code> and <code>
 
 ```javascript
 
-   wufoo.getFormEntries(formid, function(err, entries) {
+   wufoo.getFormEntries("formid", function(err, entries) {
       // do something here.
    });
 
-   wufoo.getReportEntries(reportid, function(err, entries) {
+   wufoo.getReportEntries("reportid", function(err, entries) {
+      // do something here.
+   });
+   
+   // pass in optional query parameters 
+   var optionalQuery = {pretty: true}
+   
+   wufoo.getFormEntries("formid", optionalQuery, function(err, entries) {
+      // do something here.
+   });
+
+   wufoo.getReportEntries("reportid", optionalQuery, function(err, entries) {
       // do something here.
    });
    
@@ -100,6 +158,18 @@ Get all the reports for an account. <code>getReports</code> returns an array of 
       // do something here.
    });
    
+   // pass in optional query parameters 
+   var optionalQuery = {pretty: true}
+   
+   wufoo.getReports(optionalQuery, function(err, reports) {
+      // do something here
+   });
+   
+   // get a specific form given the id.
+   wufoo.getReport("idofReport", optionalQuery, function(err, report){
+      // do something here.
+   });
+   
 ```   
 Convenience methods are provided to get entries, fields and entry count for a Report:
 
@@ -117,6 +187,22 @@ Convenience methods are provided to get entries, fields and entry count for a Re
     report.getFields(function(err, fields) {
       // do something here.
     });
+    
+    // pass in optional query parameters 
+    var optionalQuery = {pretty: true}
+    
+   report.getEntries(optionalQuery, function(err, entries) {
+     // do something here.
+   });
+    
+   report.getEntriesCount(optionalQuery, function(err, count) {
+     // do something here.
+     console.log("There are " + count + " number of entries");
+    });
+    
+    report.getFields(optionalQuery, function(err, fields) {
+      // do something here.
+    });   
 ```   
 
 
@@ -126,7 +212,14 @@ Get all the reports for a form. <code>getFields</code> returns an array of <code
 
 ```javascript
 
-   wufoo.getFields(formid, function(err, fields) {
+   wufoo.getFields("formid", function(err, fields) {
+      // do something here.
+   });
+   
+   // pass in optional query parameters 
+   var optionalQuery = {pretty: true}
+   
+   wufoo.getFields("formid", optionalQuery, function(err, fields) {
       // do something here.
    });
    
@@ -137,7 +230,14 @@ Get all the widgets for a report. <code>getWidgets</code> returns an array of <c
 
 ```javascript
 
-   wufoo.getWidgets(reportid, function(err, widgets) {
+   wufoo.getWidgets("reportid", function(err, widgets) {
+      // do something here.
+   });
+   
+   // pass in optional query parameters 
+   var optionalQuery = {pretty: true}
+   
+   wufoo.getWidgets("reportid", optionalQuery, function(err, widgets) {
       // do something here.
    });
    
@@ -148,7 +248,14 @@ Get all the comments for a form. <code>getComments</code> returns an array of <c
 
 ```javascript
 
-   wufoo.getComments(formid, function(err, comments) {
+   wufoo.getComments("formid", function(err, comments) {
+      // do something here.
+   });
+   
+   // pass in optional query parameters 
+   var optionalQuery = {pretty: true}
+   
+   wufoo.getComments("formid", optionalQuery, function(err, comments) {
       // do something here.
    });
    
@@ -157,7 +264,14 @@ Get all the comments for a form. <code>getComments</code> returns an array of <c
 Alternatively if all you need is the amount of comments for a form you can call <code>getCommentCount</code>:
 ```javascript
 
-   wufoo.getCommentCount(formid, function(err, count) {
+   wufoo.getCommentCount("formid", function(err, count) {
+      // do something here.
+   });
+   
+   // pass in optional query parameters 
+   var optionalQuery = {pretty: true}
+   
+   wufoo.getCommentCount("formid", optionalQuery, function(err, count) {
       // do something here.
    });
    

@@ -1,6 +1,5 @@
 var should = require("should");
 var helper = require("./helper.js");
-var util = require("util");
 
 describe("Form", function() {
    var $form;
@@ -14,7 +13,7 @@ describe("Form", function() {
    
    describe("#getEntries", function() {
       it("Should return array of entries", function(done){
-         $form.getEntries(function(err, entries){
+         $form.getEntries({system:'true'}, function(err, entries){
             (entries.constructor == Array).should.be.true;
             helper.isEntry(entries[0]);
             done(err);
@@ -25,7 +24,7 @@ describe("Form", function() {
    
    describe("#getFields", function() {
       it("Should return array of fields", function(done){
-         $form.getFields(function(err, fields){
+         $form.getFields({system:'true'}, function(err, fields){
             (fields.constructor == Array).should.be.true;
             helper.isField(fields[0]);
             done(err);
@@ -49,10 +48,8 @@ describe("Form", function() {
          $form.addWebhook("http://localhost:3000/bin", function(err, hashid) {
             should.exist(hashid);
             (typeof(hashid)).should.equal("string");
-            util.debug("Added Webhook: " + hashid);
             $form.deleteWebhook(hashid, function(err, success) {
                success.should.be.true;
-               util.debug("Removed Webhook: " + hashid);
                done(err);
             });
          });

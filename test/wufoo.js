@@ -1,5 +1,4 @@
 var should = require("should");
-var util = require("util");
 var helper = require("./helper.js");
 
 describe("Wufoo", function() {
@@ -39,6 +38,12 @@ describe("Wufoo", function() {
             });
          });
       })
+      it("Should return array of forms containing EntryCountToday property", function(done){
+         $wufoo.getForms({includeTodayCount:'true'}, function(err, forms){
+            should.exist(forms[0].entryCountToday);
+            done(err);
+         }); 
+      })
    });
    
    describe("#getFields", function() {
@@ -62,11 +67,17 @@ describe("Wufoo", function() {
       });
       
       it("Should return an array Objects that are Fields.", function(done){
-         $wufoo.getFields(formId, function(err, fields) {
+         $wufoo.getFields(formId, {system:'true'}, function(err, fields) {
             helper.isField(fields[0]);
             done(err);
          });
       });
+      it("Should return array of Fields containing System Fields", function(done){
+         $wufoo.getFields(formId, {system:'true'}, function(err, fields){
+            helper.isSystemFields(fields);
+            done(err);
+         }); 
+      })
    });
    
    describe("#getFormEntries", function() {
@@ -89,11 +100,17 @@ describe("Wufoo", function() {
       });
       
       it("Should return array of objects containing typical wufoo entry attributes", function(done) {
-         $wufoo.getFormEntries(formId, function(err, entries){
+         $wufoo.getFormEntries(formId, {system:'true'}, function(err, entries){
             helper.isEntry(entries[0]);
             done(err);
          });
       });
+      it("Should return entries containing System Fields", function(done){
+         $wufoo.getFormEntries(formId, {system:'true'}, function(err, entries){
+            should.exist(entries[0].iP);
+            done(err);
+         }); 
+      })
    });
    
    describe("#getReportEntries", function() {
@@ -175,7 +192,7 @@ describe("Wufoo", function() {
             if (widgets.length>0) {
                // TODO -- the fishbowl account we are using for testing do not have any widgets.
                // Must find a way for better test coverage.
-               util.debug("Testing Widget Entity");
+               console.error("Testing Widget Entity");
                helper.isWidget(widgets[0]);
             }
             done(err);
@@ -208,7 +225,7 @@ describe("Wufoo", function() {
             if (comments.length>0) {
                // TODO -- the fishbowl account we are using for testing do not have any widgets.
                // Must find a way for better test coverage.
-               util.debug("Testing Comment Entity");
+               console.error("Testing Comment Entity");
                helper.isComment(comment[0]);
             }
             done(err);
