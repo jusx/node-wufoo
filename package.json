@@ -31,6 +31,9 @@
   "bugs": {
     "url": "https://github.com/jusx/node-wufoo/issues"
   },
+  "scripts": {
+    "test": "mocha"
+  },
   "engines": [
     "node >= 0.8.0"
   ]
