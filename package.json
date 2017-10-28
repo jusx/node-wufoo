@@ -2,8 +2,13 @@
   "name": "wufoo",
   "description": "Wrapper for the Wufoo API (http://www.wufoo.com/docs/api/v3/)",
   "version": "1.1.0",
-  "author": {"name": "Justin Law", "email": "<hello@justinlaw.org>"},
-  "contributors": ["Ahmader <hello@ahmader.sa>"],
+  "author": {
+    "name": "Justin Law",
+    "email": "<hello@justinlaw.org>"
+  },
+  "contributors": [
+    "Ahmader <hello@ahmader.sa>"
+  ],
   "dependencies": {
     "request": "^2.83.0"
   },
@@ -13,11 +18,23 @@
     "url": "https://github.com/jusx/node-wufoo.git"
   },
   "homepage": "https://github.com/jusx/node-wufoo",
-  "keywords": ["wufoo", "wufoo api", "api"],
-  "devDependencies": { "mocha": "*", "should":"*" },
+  "keywords": [
+    "wufoo",
+    "wufoo api",
+    "api"
+  ],
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
   "license": "MIT",
   "bugs": {
-      "url": "https://github.com/jusx/node-wufoo/issues"
-    },
-  "engines": ["node >= 0.8.0"]
+    "url": "https://github.com/jusx/node-wufoo/issues"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "engines": [
+    "node >= 0.8.0"
+  ]
 }
