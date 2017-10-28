@@ -1,48 +1,48 @@
 ![Build](https://circleci.com/gh/jusx/node-wufoo.svg?style=shield&circle-token=3c6bf745453828aa4cc23daf7befe363287e0b97)
 
-# Node-Wufoo 
+# Node-Wufoo
 
-Node-Wufoo is a [Wufoo API] (http://www.wufoo.com/docs/api/v3/) wrapper for [node.js] (http://nodejs.org/). It simplifies working with the Wufoo API and provides an abstraction layer.
+Node-Wufoo is a [Wufoo API](http://www.wufoo.com/docs/api/v3/) wrapper for [node.js](http://nodejs.org/). It simplifies working with the Wufoo API and provides an abstraction layer.
 
 ## Installation
 
     $ npm install wufoo
-   
+
 ## Usage
 
-Each API returns it's own set of objects which is all documented on [Wufoo.com] (http://www.wufoo.com/docs/api/v3/) for reference. 
+Each API returns it's own set of objects which is all documented on [Wufoo.com](http://www.wufoo.com/docs/api/v3/) for reference.
 
 ### Example
 
 ```javascript
    var Wufoo = require("wufoo");
    var wufoo = new Wufoo("fishbowl", "AOI6-LFKL-VM1Q-IEX9");
-   
+
    wufoo.getForms(function(err, forms) {
       // do something with your forms here.
    });
-   
+
    // get a specific form given the id.
    wufoo.getForm("idofForm", function(err, form){
       // do something with your form here.
    });
-   
+
    wufoo.getFormEntries("idofForm", function(err, entries) {
       // do something with your entries here.
    });
-   
-   // pass in optional query parameters 
+
+   // pass in optional query parameters
    var optionalQuery = {pretty: true}
-   
+
    wufoo.getForms(optionalQuery, function(err, forms) {
       // do something with your forms here.
    });
-   
-   // get a specific form given the id and pass in optional query parameters 
+
+   // get a specific form given the id and pass in optional query parameters
    wufoo.getForm("idofForm", optionalQuery, function(err, forms) {
       // do something with your forms here.
    });
-   
+
    wufoo.getFormEntries("idofForm", optionalQuery, function(err, entries) {
       // do something with your entries here.
    });
@@ -60,27 +60,27 @@ Get all the forms for an account. <code>getForms</code> returns an array of <cod
       console.log(forms[0].description);
       // do something here.
    });
-   
+
    // get a specific form given the id.
    wufoo.getForm("idofForm", function(err, form){
       // do something here.
    });
-   
-   // pass in optional query parameters 
+
+   // pass in optional query parameters
    var optionalQuery = {pretty: true}
-   
+
    wufoo.getForms(optionalQuery, function(err, forms) {
       console.log(forms[0].hash);
       console.log(forms[0].name);
       console.log(forms[0].description);
       // do something here.
    });
-   
-   // get a specific form given the id and pass in optional query parameters 
+
+   // get a specific form given the id and pass in optional query parameters
    wufoo.getForm("idofForm", optionalQuery, function(err, forms) {
       // do something here.
    });
-   
+
 ```   
 
 Convenience methods are provided to get entries, fields and entry count for a <code>Form</code>:
@@ -90,28 +90,28 @@ Convenience methods are provided to get entries, fields and entry count for a <c
    form.getEntries(function(err, entries) {
      // do something here.
    });
-   
+
    form.getEntriesCount(function(err, count) {
       // do something here.
       console.log("There are " + count + " number of entries");
     });
-   
+
     form.getFields(function(err, fields) {
         // do something here.
     });
-    
-    // pass in optional query parameters 
+
+    // pass in optional query parameters
     var optionalQuery = {pretty: true}
-    
+
     form.getEntries(optionalQuery, function(err, entries) {
       // do something here.
     });
-    
+
     form.getEntriesCount(optionalQuery, function(err, count) {
        // do something here.
        console.log("There are " + count + " number of entries");
      });
-    
+
      form.getFields(optionalQuery, function(err, fields) {
          // do something here.
      });
@@ -131,10 +131,10 @@ Get all the entries for a form or report. <code>getFormEntries</code> and <code>
    wufoo.getReportEntries("reportid", function(err, entries) {
       // do something here.
    });
-   
-   // pass in optional query parameters 
+
+   // pass in optional query parameters
    var optionalQuery = {pretty: true}
-   
+
    wufoo.getFormEntries("formid", optionalQuery, function(err, entries) {
       // do something here.
    });
@@ -142,7 +142,7 @@ Get all the entries for a form or report. <code>getFormEntries</code> and <code>
    wufoo.getReportEntries("reportid", optionalQuery, function(err, entries) {
       // do something here.
    });
-   
+
 ```   
 
 ### Reports
@@ -154,24 +154,24 @@ Get all the reports for an account. <code>getReports</code> returns an array of 
    wufoo.getReports(function(err, reports) {
       // do something here
    });
-   
+
    // get a specific form given the id.
    wufoo.getReport("idofReport", function(err, report){
       // do something here.
    });
-   
-   // pass in optional query parameters 
+
+   // pass in optional query parameters
    var optionalQuery = {pretty: true}
-   
+
    wufoo.getReports(optionalQuery, function(err, reports) {
       // do something here
    });
-   
+
    // get a specific form given the id.
    wufoo.getReport("idofReport", optionalQuery, function(err, report){
       // do something here.
    });
-   
+
 ```   
 Convenience methods are provided to get entries, fields and entry count for a Report:
 
@@ -180,28 +180,28 @@ Convenience methods are provided to get entries, fields and entry count for a Re
    report.getEntries(function(err, entries) {
      // do something here.
    });
-   
+
    report.getEntriesCount(function(err, count) {
       // do something here.
       console.log("There are " + count + " number of entries");
     });
-   
+
     report.getFields(function(err, fields) {
       // do something here.
     });
-    
-    // pass in optional query parameters 
+
+    // pass in optional query parameters
     var optionalQuery = {pretty: true}
-    
+
    report.getEntries(optionalQuery, function(err, entries) {
      // do something here.
    });
-    
+
    report.getEntriesCount(optionalQuery, function(err, count) {
      // do something here.
      console.log("There are " + count + " number of entries");
     });
-    
+
     report.getFields(optionalQuery, function(err, fields) {
       // do something here.
     });   
@@ -217,14 +217,14 @@ Get all the reports for a form. <code>getFields</code> returns an array of <code
    wufoo.getFields("formid", function(err, fields) {
       // do something here.
    });
-   
-   // pass in optional query parameters 
+
+   // pass in optional query parameters
    var optionalQuery = {pretty: true}
-   
+
    wufoo.getFields("formid", optionalQuery, function(err, fields) {
       // do something here.
    });
-   
+
 ```
 
 ### Widgets
@@ -235,14 +235,14 @@ Get all the widgets for a report. <code>getWidgets</code> returns an array of <c
    wufoo.getWidgets("reportid", function(err, widgets) {
       // do something here.
    });
-   
-   // pass in optional query parameters 
+
+   // pass in optional query parameters
    var optionalQuery = {pretty: true}
-   
+
    wufoo.getWidgets("reportid", optionalQuery, function(err, widgets) {
       // do something here.
    });
-   
+
 ```
 
 ### Comments
@@ -253,14 +253,14 @@ Get all the comments for a form. <code>getComments</code> returns an array of <c
    wufoo.getComments("formid", function(err, comments) {
       // do something here.
    });
-   
-   // pass in optional query parameters 
+
+   // pass in optional query parameters
    var optionalQuery = {pretty: true}
-   
+
    wufoo.getComments("formid", optionalQuery, function(err, comments) {
       // do something here.
    });
-   
+
 ```
 
 Alternatively if all you need is the amount of comments for a form you can call <code>getCommentCount</code>:
@@ -269,25 +269,25 @@ Alternatively if all you need is the amount of comments for a form you can call 
    wufoo.getCommentCount("formid", function(err, count) {
       // do something here.
    });
-   
-   // pass in optional query parameters 
+
+   // pass in optional query parameters
    var optionalQuery = {pretty: true}
-   
+
    wufoo.getCommentCount("formid", optionalQuery, function(err, count) {
       // do something here.
    });
-   
+
 ```
 
 ### WebHooks
-Add a [WebHook] (http://www.wufoo.com/docs/api/v3/webhooks/put/) for a form:
+Add a [WebHook](http://www.wufoo.com/docs/api/v3/webhooks/put/) for a form:
 
 ```javascript
-  
+
    wufoo.webhook().add("formid", "http://localhost:3000", function(err, hashid) {
      // store the webhook hashid somewhere in case we want to delete them later.
    })
-   
+
    // pass in optional options
    var options = {url: "http://abc.com/webhook", handshakeKey: "hand-shaking", metadata: true}
    wufoo.webhook().add("formid", options, function(err, hashid) {
@@ -296,16 +296,16 @@ Add a [WebHook] (http://www.wufoo.com/docs/api/v3/webhooks/put/) for a form:
    })
 ```
 
-Delete the WebHook. [More info] (http://www.wufoo.com/docs/api/v3/webhooks/delete/):
-   
+Delete the WebHook. [More info](http://www.wufoo.com/docs/api/v3/webhooks/delete/):
+
 ```javascript   
    wufoo.webhook().delete("formid", "webhookHashId", function(err, success) {
      if (!success) {
        // do something.
      }
-      
+
    })
-   
+
 ```
 
 Helper methods are also provided on the <code>Form</code> object:
@@ -315,8 +315,8 @@ Helper methods are also provided on the <code>Form</code> object:
       form.addWebhook("http://localhost:3000", function(err, hashid) {
          // store the webhook hashid somewhere in case we want to delete them later.
        })
-      
-   
+
+
       form.deleteWebhook("webhookHashId", function(err, success) {
         if (!success) {
           // do something.
@@ -339,13 +339,13 @@ Please fork it. Add new features or fix bugs and do a pull request. Tests should
 
 ### Testing
 Be sure to have [mocha](http://mochajs.org/) installed. Run the entire test suite from the root directory of the project:
-        
+
     $ mocha
 
 ## Future Versions
-Node-Wufoo implements almost all of the Wufoo RESTful API except the following: 
+Node-Wufoo implements almost all of the Wufoo RESTful API except the following:
 
-- Updating Entries ([POST API] (http://www.wufoo.com/docs/api/v3/entries/post/)).
-- [Login] (http://www.wufoo.com/docs/api/v3/login/).
+- Updating Entries ([POST API](http://www.wufoo.com/docs/api/v3/entries/post/)).
+- [Login](http://www.wufoo.com/docs/api/v3/login/).
 
-Implementation and support of the above will be included in future versions. 
+Implementation and support of the above will be included in future versions.
