@@ -338,14 +338,21 @@ Please fork it. Add new features or fix bugs and do a pull request. Tests should
 - Create new Pull Request.
 
 ### Testing
-Be sure to have [mocha](http://mochajs.org/) installed. Run the entire test suite from the root directory of the project:
+Be sure to have [mocha](http://mochajs.org/) installed.  Run the entire test suite from the root directory of the project by running the command:
 
-    $ mocha
+```
+   $ mocha
+```
+   or
+
+```
+   $ npm test
+```
 
 ## Future Versions
-Node-Wufoo implements almost all of the Wufoo RESTful API except the following:
+Node-Wufoo implements all of the Wufoo RESTful API except the following:
 
 - Updating Entries ([POST API](http://www.wufoo.com/docs/api/v3/entries/post/)).
 - [Login](http://www.wufoo.com/docs/api/v3/login/).
 
-Implementation and support of the above will be included in future versions.
+Implementation and support of the above will be included in future versions. Contributions welcome!
