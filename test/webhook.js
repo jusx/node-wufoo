@@ -1,5 +1,4 @@
 var should = require("should");
-var util = require("util");
 var helper = require("./helper.js");
 var WebHook = require("../lib/webhook.js");
 
@@ -30,7 +29,6 @@ describe("WebHook", function() {
          id = ids[i]
          helper.wufoo.webhook().delete($form.hash, id, function(err, success) {
             success.should.be.true;
-            util.debug("Removed Webhook: " + id);
          });
       }
       done();
