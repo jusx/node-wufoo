@@ -60,6 +60,16 @@ describe("Wufoo", function() {
             });
          });
       })
+      it("Should return the right form given the hash with Async", function(done) {
+         $wufoo.getForms(function(err, forms){
+            var hash = forms[0].hash;
+            $wufoo.getFormAsync(hash)
+               .then((form) => {
+                  form.hash.should.equal(hash);
+                  done();
+               });
+         });
+      })
       it("Should return array of forms containing EntryCountToday property", function(done){
          $wufoo.getForms({includeTodayCount:'true'}, function(err, forms){
             should.exist(forms[0].entryCountToday);
