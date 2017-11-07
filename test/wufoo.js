@@ -104,6 +104,15 @@ describe("Wufoo", function() {
             done(err);
          });
       });
+
+      it("Should return an array Objects that are Fields with Async", function(done){
+         $wufoo.getFieldsAsync(formId, {system:'true'})
+            .then((fields) => {
+               helper.isField(fields[0]);
+               done();
+            });
+      });
+
       it("Should return array of Fields containing System Fields", function(done){
          $wufoo.getFields(formId, {system:'true'}, function(err, fields){
             helper.isSystemFields(fields);
@@ -129,6 +138,15 @@ describe("Wufoo", function() {
             (entries.length > 0).should.be.true;
             done(err);
          });
+      });
+
+      it("Should return entries without error with Async", function(done) {
+         $wufoo.getFormEntriesAsync(formId)
+            .then((entries) => {
+               should.exist(entries);
+               (entries.length > 0).should.be.true;
+               done();
+            });
       });
 
       it("Should return array of objects containing typical wufoo entry attributes", function(done) {
@@ -170,6 +188,14 @@ describe("Wufoo", function() {
             done(err);
          });
       });
+
+      it("Should return array of objects containing typical wufoo entry attributes with Async", function(done) {
+         $wufoo.getReportEntriesAsync(reportId)
+            .then((entries) => {
+               helper.isEntry(entries[0]);
+               done();
+            });
+      });
    });
 
    describe("#getReports", function() {
@@ -194,6 +220,20 @@ describe("Wufoo", function() {
             done(err);
          });
       });
+
+      it("Should return array of objects containing typical wufoo Report attributes with Async", function(done) {
+         $wufoo.getReportsAsync()
+            .then((reports) => {
+               report = reports[0];
+               should.exist(report.hash);
+               should.exist(report.name);
+               should.exist(report.url);
+               should.exist(report.dateCreated);
+               should.exist(report.dateUpdated);
+               should.exist(report.getWidgets);
+               done();
+            });
+      });
    });
 
    describe("#getReport", function(){
@@ -205,6 +245,20 @@ describe("Wufoo", function() {
                done(err);
             });
          });
+      })
+
+      it("Should return a Report given the hash with Async", function(done) {
+         var hash;
+         $wufoo.getReportsAsync()
+            .then((reports) => {
+               hash = reports[0].hash;
+               return $wufoo.getReportAsync(reports[0].hash);
+            })
+            .then((report)=> {
+               report.hash.should.equal(hash);
+               done();
+            })
+            .catch((err) => {done(err);});
       })
    });
 
@@ -230,13 +284,29 @@ describe("Wufoo", function() {
             done(err);
          });
       })
+
+      it("Should return an Array of Widgets given the hash with Async", function(done) {
+         $wufoo.getWidgetsAsync(reportId)
+            .then((widgets) => {
+               (widgets instanceof Array).should.be.true;
+               if (widgets.length>0) {
+                  // TODO -- the fishbowl account we are using for testing do not have any widgets.
+                  // Must find a way for better test coverage.
+                  console.error("Testing Widget Entity");
+                  helper.isWidget(widgets[0]);
+               }
+               done();
+            });
+      });
    });
 
    describe("#getFormComments", function(){
       // TODO find a way to mock up wufoo responses so that we have the dataset we need for testing!
       var id;
+      var allForms;
       before(function(done){
          $wufoo.getForms(function(err, forms){
+            allForms = forms;
             for (var i=0;i<forms.length;i++) {
                form = forms[i];
                $wufoo.getCommentCount(forms[i].hash, function(err, count) {
@@ -262,6 +332,32 @@ describe("Wufoo", function() {
             }
             done(err);
          });
-      })
+      });
+
+      it("Should return the comment count given the hash with Async", function(done) {
+         let id = allForms[0].hash;
+         $wufoo.getCommentCountAsync(id)
+            .then((count) => {
+               if (count >0) {
+                  id = allForms[0].hash;
+               }
+               done();
+            });
+      });
+
+      it("Should return an Array of Comments given the hash with Async", function(done) {
+         $wufoo.getCommentsAsync(id)
+            .then((comments) => {
+               (comments instanceof Array).should.be.true;
+               if (comments.length>0) {
+                  // TODO -- the fishbowl account we are using for testing do not have any widgets.
+                  // Must find a way for better test coverage.
+                  console.error("Testing Comment Entity");
+                  helper.isComment(comment[0]);
+               }
+               done();
+            });
+      });
+
    });
 });
