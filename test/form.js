@@ -53,7 +53,19 @@ describe("Form", function() {
                done(err);
             });
          });
+      });
 
+      it("Should add a webhoook successfully with Async", function(done) {
+         $form.addWebhookAsync("http://localhost:3000/bin")
+            .then((hashid) => {
+               should.exist(hashid);
+               (typeof(hashid)).should.equal("string");
+               return $form.deleteWebhookAsync(hashid);
+            })
+            .then((success) => {
+               success.should.be.true;
+               done();
+            });
       });
    })
 
