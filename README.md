@@ -12,6 +12,8 @@ Node-Wufoo is a [Wufoo API](http://www.wufoo.com/docs/api/v3/) wrapper for [node
 
 Each API returns it's own set of objects which is all documented on [Wufoo.com](http://www.wufoo.com/docs/api/v3/) for reference.
 
+The required node version is 8.0.0 and above for all releases above v1.1.0.
+
 ### Example
 
 ```javascript
@@ -325,7 +327,26 @@ Helper methods are also provided on the <code>Form</code> object:
       })
 
    ```
+### Promises
+Every single API documented above have an alternate version that supports promises. For the preferred method of using promises or await/async instead of callbacks append `Async` to the end of the function name. For example, the following are all valid:
 
+- `from.addWebhookAsync`
+- `wufoo.getCommentCountAsync`
+- `wufoo.getWidgetsAsync`
+
+And so on. Calling `wufoo.getCommentCountAsync` will be as follows:
+
+```js
+
+   wufoo.getCommentCount("formid")
+      .then ((count) => {
+         console.log(count);
+      })
+      .catch((err) => {
+         console.log(err);
+      });
+
+```
 
 ## Contributions
 
