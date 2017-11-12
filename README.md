@@ -1,4 +1,5 @@
 ![Build](https://circleci.com/gh/jusx/node-wufoo.svg?style=shield&circle-token=3c6bf745453828aa4cc23daf7befe363287e0b97)
+[![npm version](https://img.shields.io/npm/v/wufoo.svg)](https://www.npmjs.com/package/wufoo)
 
 # Node-Wufoo
 
