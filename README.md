@@ -13,7 +13,7 @@ Node-Wufoo is a [Wufoo API](http://www.wufoo.com/docs/api/v3/) wrapper for [node
 
 Each API returns it's own set of objects which is all documented on [Wufoo.com](http://www.wufoo.com/docs/api/v3/) for reference.
 
-The required node version is 8.0.0 and above for all releases above v1.1.0.
+The required node version is `8.0.0` and above for all releases above `v1.2.x`.
 
 ### Example
 
